@@ -41,10 +41,10 @@ class Sworm_Table extends Sworm_Abstract
      * @param array ...$side
      * @return Sworm_Table
      */
-    public function where($clause, ...$side){
+    public function where($clause, ...$side){   //可变长度参数
         $where = clone $this;
-        if(is_array($clause)){
-            $keys = array_keys($clause);
+        if(is_array($clause)){          //如果传进来的参数是数组就将数组内容加入where数组
+            $keys = array_keys($clause);  //取出键名成为一个数组
             foreach ($keys as $key){
                 array_push($where->where, array(
                     'type' => 'AND',
